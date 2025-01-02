@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 
 const useWeather = city => {
 	const API_KEY = '5997c03de1434f6f992124506250201 '
-	const API_URL = `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${city}&days=7`
+	const API_URL = `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${city}&days=7`
 
 	const [temp, setTemp] = useState('')
 	const [condition, setCondition] = useState('')
