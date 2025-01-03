@@ -30,7 +30,7 @@ function Weather({ city }) {
 						<div key={index} className='flex flex-col items-center relative'>
 							<p className='text-xl'>{hour.time}:00</p>
 							<img className='my-2 w-16 h-16' src={hour.icon} alt={hour.condition} />
-							<p className='font-bold text-xl'>{hour.temp}°C</p>
+							<p className='font-bold text-xl'>{hour.temp.toFixed(0)}°C</p>
 							{index < hourlyForecast.length - 1 && (
 								<div className='absolute right-[-8px] h-[80%] w-[1px] bg-gray-600/30 top-[10%]'></div>
 							)}
@@ -49,7 +49,7 @@ function Weather({ city }) {
 					</div>
 					<div>
 						<h2 className='text-2xl font-medium'>Wind</h2>
-						<p className='text-3xl font-extrabold'>{wind} km/h</p>
+						<p className='text-3xl font-extrabold'>{wind/3.6} m/s</p>
 					</div>
 					<div>
 						<h2 className='text-2xl font-medium'>Humidity</h2>
