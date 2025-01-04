@@ -1,5 +1,5 @@
 import React from 'react'
-import useWeather from '../hooks/UseWeather'
+import useWeather from '../../hooks/UseWeather'
 
 function Forecast({ city }) {
 	const { dailyForecast } = useWeather(city)

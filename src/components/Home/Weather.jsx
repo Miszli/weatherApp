@@ -1,8 +1,9 @@
-import React from 'react'
-import useWeather from '../hooks/UseWeather'
+import React, { useState } from 'react'
+import useWeather from '../../hooks/UseWeather'
+import AddToFavorite from './AddToFavorite'
 
-function Weather({ city }) {
-	const { temp, condition, icon, wind, humidity, uv, feels_like, hourlyForecast, error } = useWeather(city)
+function Weather({ city, favorites, setFavorites }) {
+	const { temp, country, condition, icon, wind, humidity, uv, feels_like, hourlyForecast, error } = useWeather(city)
 
 	return (
 		<div className='lg:w-7/12 flex flex-col overflow-hidden w-10/12'>
@@ -12,14 +13,19 @@ function Weather({ city }) {
 						<h2 className='text-5xl font-extrabold h-[196px]'>City not found</h2>
 					</>
 				) : (
-					<>
-						<div className='flex items-center gap-4'>
-							<h2 className='min-[440px]:text-7xl text-5xl font-extrabold'>{city.charAt(0).toUpperCase() + city.slice(1)}</h2>
-							<img className='w-24 h-24' src={icon} alt={condition} />
+					<div className='flex justify-between items-start'>
+						<div>
+							<div className='flex items-center gap-4 max-w-[800px]'>
+								<h2 className='min-[440px]:text-7xl text-5xl font-extrabold'>
+									{city.charAt(0).toUpperCase() + city.slice(1)}, {country}
+								</h2>
+								<img className='w-24 h-24' src={icon} alt={condition} />
+							</div>
+							<p className='text-xl mb-8 mt-4'>{condition}</p>
+							<p className='text-5xl font-bold'>{temp}°C</p>
 						</div>
-						<p className='text-xl mb-2'>{condition}</p>
-						<p className='text-5xl font-bold mt-4'>{temp}°C</p>
-					</>
+						<AddToFavorite favCity={city} favorites={favorites} setFavorites={setFavorites}/>
+					</div>
 				)}
 			</div>
 
@@ -34,7 +40,6 @@ function Weather({ city }) {
 							{index < hourlyForecast.length - 1 && (
 								<div className='absolute right-[-8px] h-[80%] w-[1px] bg-gray-600/30 top-[10%]'></div>
 							)}
-							
 						</div>
 					))}
 				</div>
@@ -49,7 +54,7 @@ function Weather({ city }) {
 					</div>
 					<div>
 						<h2 className='text-2xl font-medium'>Wind</h2>
-						<p className='text-3xl font-extrabold'>{wind/3.6} m/s</p>
+						<p className='text-3xl font-extrabold'>{wind / (3.6).toFixed(0)} m/s</p>
 					</div>
 					<div>
 						<h2 className='text-2xl font-medium'>Humidity</h2>

@@ -13,6 +13,7 @@ const useWeather = city => {
 	const [feels_like, setFeelsLike] = useState('')
 	const [hourlyForecast, setHourlyForecast] = useState([])
 	const [dailyForecast, setDailyForecast] = useState([])
+	const [country, setCountry] = useState('')
 	const [error, setError] = useState(false)
 
 	useEffect(() => {
@@ -31,6 +32,7 @@ const useWeather = city => {
 				const hour = Number(data.location.localtime.slice(11).split(':')[0])
 
 				setTemp(data.current.temp_c)
+				setCountry(data.location.country)
 				setCondition(data.current.condition.text)
 				setIcon(data.current.condition.icon)
 				setWind(data.current.wind_kph)
@@ -79,6 +81,7 @@ const useWeather = city => {
 
 	return {
 		temp,
+		country,
 		condition,
 		icon,
 		wind,
