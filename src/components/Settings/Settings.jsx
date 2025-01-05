@@ -2,8 +2,10 @@ import React from 'react'
 
 function Settings() {
 	return (
-		<div className='lg:w-10/12 flex flex-col overflow-hidden w-10/12'>
-			<h1 className='text-4xl font-bold'>Settings Page</h1>
+		<div className='w-full ml-7 mt-3'>
+			<h1 className='min-[440px]:text-7xl text-5xl font-extrabold mb-12'>Settings</h1>
+
+			
 		</div>
 	)
 }

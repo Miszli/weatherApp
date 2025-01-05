@@ -2,7 +2,7 @@ import React from 'react'
 import useMultiWeather from '../../hooks/useMultiWeather'
 
 function FavoriteCities({ favorites, setFavorites }) {
-	const { weatherData, loading } = useMultiWeather(favorites)
+	const { loading, temps, icons, countries, locations, conditions } = useMultiWeather(favorites)
 
 	const handleRemoveFavorite = index => {
 		const newFavorites = favorites.filter(city => city !== favorites[index])
@@ -12,32 +12,32 @@ function FavoriteCities({ favorites, setFavorites }) {
 
 	if (loading)
 		return (
-			<div className='w-full ml-6 mt-3'>
+			<div className='w-full ml-7 mt-3'>
 				<h1 className='min-[440px]:text-7xl text-5xl font-extrabold mb-12'>Your Favorite Cities</h1>
 				<p className='text-2xl font-light'>Loading</p>
 			</div>
 		)
 
 	return (
-		<div className='w-full ml-6 mt-3'>
+		<div className='w-full ml-7 mt-3'>
 			<h1 className='min-[440px]:text-7xl text-5xl font-extrabold mb-12'>Your Favorite Cities</h1>
 
-			{weatherData.length === 0 && <p className='text-2xl font-light'>Your favorite cities will appear here</p>}
+			{favorites.length === 0 && <p className='text-2xl font-light'>Your favorite cities will appear here</p>}
 
-			{weatherData.map((data, index) => (
+			{favorites.map((location, index) => (
 				<div key={index} className='w-11/12 bg-[#202B3B] flex justify-between items-center p-4 rounded-md mb-6'>
 					<div className='flex items-center gap-4'>
-						<img className='w-24 h-24' src={data.current.condition.icon} alt={data.current.condition.text} />
+						<img className='w-24 h-24' src={icons[index]} alt={conditions[index]} />
 						<div>
 							<h2 className='text-4xl font-medium'>
-								{data.location.name.charAt(0).toUpperCase() + data.location.name.slice(1)}, {data.location.country}
+								{locations[index]}, {countries[index]}
 							</h2>
-							<p className='text-xl mt-4'>{data.current.condition.text}</p>
+							<p className='text-xl mt-4'>{conditions[index]}</p>
 						</div>
 					</div>
 					<div className='flex items-center gap-8'>
-						<p className='text-5xl font-extrabold'>{data.current.temp_c}°C</p>
-						<button
+						<p className='text-5xl font-extrabold'>{temps[index]}°C</p>
+						<button	
 							onClick={() => handleRemoveFavorite(index)}
 							className='text-2xl h-24 flex items-center justify-center text-red-500'>
 							<i className='fa-regular fa-trash-can'></i>

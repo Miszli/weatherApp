@@ -3,9 +3,12 @@ import { useState, useEffect } from 'react'
 function useMultiWeather(cities) {
 	const API_KEY = '5997c03de1434f6f992124506250201 '
 
-	const [weatherData, setWeatherData] = useState([])
 	const [loading, setLoading] = useState(true)
-	
+	const [temps, setTemps] = useState([])
+	const [icons, setIcons] = useState([])
+	const [countries, setCountries] = useState([])
+	const [locations, setLocations] = useState([])
+	const [conditions, setConditions] = useState([])
 
 	useEffect(() => {
 		const fetchWeather = async () => {
@@ -15,7 +18,11 @@ function useMultiWeather(cities) {
 					cities.map(city => fetch(`http://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${city}`))
 				)
 				const data = await Promise.all(responses.map(res => res.json()))
-				setWeatherData(data)
+				setTemps(data.map(item => item.current.temp_c))
+				setIcons(data.map(item => item.current.condition.icon))
+				setCountries(data.map(item => item.location.country))
+				setLocations(data.map(item => item.location.name))
+				setConditions(data.map(item => item.current.condition.text))
 			} catch (error) {
 				console.error('Failed to fetch weather data', error)
 			} finally {
@@ -26,8 +33,7 @@ function useMultiWeather(cities) {
 		fetchWeather()
 	}, [cities])
 
-	return { weatherData, loading }
+	return { loading, temps, icons, countries, locations, conditions }
 }
 
 export default useMultiWeather
-    
