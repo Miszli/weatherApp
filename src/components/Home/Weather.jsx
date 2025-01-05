@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import useWeather from '../../hooks/UseWeather'
 import AddToFavorite from './AddToFavorite'
 
@@ -8,7 +8,7 @@ function Weather({ city, favorites, setFavorites }) {
 	return (
 		<div className='lg:w-7/12 flex flex-col overflow-hidden w-10/12'>
 			<div className='flex flex-col justify-between w-full'>
-				{error ? (
+				{error || city === '' ? (
 					<>
 						<h2 className='text-5xl font-extrabold h-[196px]'>City not found</h2>
 					</>
