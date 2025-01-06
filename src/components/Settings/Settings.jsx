@@ -34,27 +34,29 @@ function Settings() {
 		<div className='w-full lg:ml-7 mt-3 flex flex-col gap-12 justify-center items-center lg:items-start'>
 			<div className='flex lg:justify-between lg:items-center w-10/12 lg:flex-row flex-col align-start justify-start gap-4'>
 				<h1 className='min-[440px]:text-7xl text-5xl font-extrabold'>Settings</h1>
-				<button className='text-3xl font-extrabold text-red-500 py-1 lg:px-4 text-left hover:text-red-700 duration-300' onClick={resetSettings}>
+				<button
+					className='text-3xl font-extrabold text-red-500 py-1 lg:px-4 text-left hover:text-red-700 duration-300'
+					onClick={resetSettings}>
 					reset
 				</button>
 			</div>
 
 			<div className='w-10/12'>
 				<h2 className='text-4xl font-bold mb-6'>Units</h2>
-				<div className='bg-[#202B3B] p-4 rounded-md flex flex-col gap-8'>
+				<div className='bg-secondary p-4 rounded-md flex flex-col gap-8'>
 					<div>
 						<h3 className='uppercase text-base font-extrabold opacity-60 mb-4'>temperature</h3>
-						<div className='bg-[#0B131E] flex items-center justify-center p-2 rounded-md'>
+						<div className='bg-primary flex items-center justify-center p-2 rounded-md'>
 							<button
 								className={`flex items-center justify-center w-1/2 py-2 rounded-md text-lg ${
-									temperatureUnit === 'celsius' ? 'bg-[#202B3B]' : 'bg-[#0B131E]'
+									temperatureUnit === 'celsius' ? 'bg-secondary' : 'bg-primary'
 								}`}
 								onClick={changeTemperatureUnit}>
 								<p>Celsius</p>
 							</button>
 							<button
 								className={`flex items-center justify-center w-1/2 py-2 rounded-md text-lg ${
-									temperatureUnit === 'fahrenheit' ? 'bg-[#202B3B]' : 'bg-[#0B131E]'
+									temperatureUnit === 'fahrenheit' ? 'bg-secondary' : 'bg-primary'
 								}`}
 								onClick={changeTemperatureUnit}>
 								<p>Fahrenheit</p>
@@ -64,17 +66,17 @@ function Settings() {
 
 					<div>
 						<h3 className='uppercase text-base font-extrabold opacity-60 mb-4'>wind</h3>
-						<div className='bg-[#0B131E] flex items-center justify-center p-2 rounded-md'>
+						<div className='bg-primary flex items-center justify-center p-2 rounded-md'>
 							<button
 								className={`flex items-center justify-center w-1/2 py-2 rounded-md text-lg ${
-									windUnit === 'm/s' ? 'bg-[#202B3B]' : 'bg-[#0B131E]'
+									windUnit === 'm/s' ? 'bg-secondary' : 'bg-primary'
 								}`}
 								onClick={changeWindUnit}>
 								<p>m/s</p>
 							</button>
 							<button
 								className={`flex items-center justify-center w-1/2 py-2 rounded-md text-lg ${
-									windUnit === 'km/h' ? 'bg-[#202B3B]' : 'bg-[#0B131E]'
+									windUnit === 'km/h' ? 'bg-secondary' : 'bg-primary'
 								}`}
 								onClick={changeWindUnit}>
 								<p>km/h</p>
@@ -83,17 +85,17 @@ function Settings() {
 					</div>
 					<div>
 						<h3 className='uppercase text-base font-extrabold opacity-60 mb-4'>pressure</h3>
-						<div className='bg-[#0B131E] flex items-center justify-center p-2 rounded-md'>
+						<div className='bg-primary flex items-center justify-center p-2 rounded-md'>
 							<button
 								className={`flex items-center justify-center w-1/2 py-2 rounded-md text-lg ${
-									pressureUnit === 'hPa' ? 'bg-[#202B3B]' : 'bg-[#0B131E]'
+									pressureUnit === 'hPa' ? 'bg-secondary' : 'bg-primary'
 								}`}
 								onClick={changePressureUnit}>
 								<p>hPa</p>
 							</button>
 							<button
 								className={`flex items-center justify-center w-1/2 py-2 rounded-md text-lg ${
-									pressureUnit === 'in' ? 'bg-[#202B3B]' : 'bg-[#0B131E]'
+									pressureUnit === 'in' ? 'bg-secondary' : 'bg-primary'
 								}`}
 								onClick={changePressureUnit}>
 								<p>inches</p>
@@ -102,17 +104,17 @@ function Settings() {
 					</div>
 					<div>
 						<h3 className='uppercase text-base font-extrabold opacity-60 mb-4'>temperature</h3>
-						<div className='bg-[#0B131E] flex items-center justify-center p-2 rounded-md'>
+						<div className='bg-primary flex items-center justify-center p-2 rounded-md'>
 							<button
 								className={`flex items-center justify-center w-1/2 py-2 rounded-md text-lg ${
-									precipitationUnit === 'mm' ? 'bg-[#202B3B]' : 'bg-[#0B131E]'
+									precipitationUnit === 'mm' ? 'bg-secondary' : 'bg-primary'
 								}`}
 								onClick={changePrecipitationUnit}>
 								<p>mm</p>
 							</button>
 							<button
 								className={`flex items-center justify-center w-1/2 py-2 rounded-md text-lg ${
-									precipitationUnit === 'in' ? 'bg-[#202B3B]' : 'bg-[#0B131E]'
+									precipitationUnit === 'in' ? 'bg-secondary' : 'bg-primary'
 								}`}
 								onClick={changePrecipitationUnit}>
 								<p>inches</p>
@@ -124,40 +126,44 @@ function Settings() {
 
 			<div className='w-10/12'>
 				<h2 className='text-4xl font-bold mb-6'>General</h2>
-				<div className='bg-[#202B3B] p-4 rounded-md flex flex-col gap-8'>
+				<div className='bg-secondary p-4 rounded-md flex flex-col gap-8'>
 					<div>
 						<h3 className='uppercase text-base font-extrabold opacity-60 mb-4'>theme</h3>
-						<div className='bg-[#0B131E] flex items-center justify-center p-2 rounded-md'>
+						<div className='bg-primary flex items-center justify-center p-2 rounded-md'>
 							<button
 								className={`flex items-center justify-center w-1/2 py-2 rounded-md text-lg ${
-									theme === 'dark' ? 'bg-[#202B3B]' : 'bg-[#0B131E]'
+									theme === 'dark' ? 'bg-secondary' : 'bg-primary'
 								}`}
 								onClick={changeTheme}>
-								<p>dark</p>
+								<div className='flex items-center gap-2'>
+									<p>dark</p>
+								</div>
 							</button>
 							<button
 								className={`flex items-center justify-center w-1/2 py-2 rounded-md text-lg ${
-									theme === 'light' ? 'bg-[#202B3B]' : 'bg-[#0B131E]'
+									theme === 'light' ? 'bg-secondary' : 'bg-primary'
 								}`}
 								onClick={changeTheme}>
-								<p>light</p>
+								<div className='flex items-center gap-2'>
+									<p>light</p>
+								</div>
 							</button>
 						</div>
 					</div>
 
 					<div>
 						<h3 className='uppercase text-base font-extrabold opacity-60 mb-4'>language</h3>
-						<div className='bg-[#0B131E] flex items-center justify-center p-2 rounded-md'>
+						<div className='bg-primary flex items-center justify-center p-2 rounded-md'>
 							<button
 								className={`flex items-center justify-center w-1/2 py-2 rounded-md text-lg ${
-									language === 'en' ? 'bg-[#202B3B]' : 'bg-[#0B131E]'
+									language === 'en' ? 'bg-secondary' : 'bg-primary'
 								}`}
 								onClick={changeLanguage}>
 								<p>English</p>
 							</button>
 							<button
 								className={`flex items-center justify-center w-1/2 py-2 rounded-md text-lg ${
-									language === 'pl' ? 'bg-[#202B3B]' : 'bg-[#0B131E]'
+									language === 'pl' ? 'bg-secondary' : 'bg-primary'
 								}`}
 								onClick={changeLanguage}>
 								<p>Polish</p>
@@ -166,17 +172,17 @@ function Settings() {
 					</div>
 					<div>
 						<h3 className='uppercase text-base font-extrabold opacity-60 mb-4'>time</h3>
-						<div className='bg-[#0B131E] flex items-center justify-center p-2 rounded-md'>
+						<div className='bg-primary flex items-center justify-center p-2 rounded-md'>
 							<button
 								className={`flex items-center justify-center w-1/2 py-2 rounded-md text-lg ${
-									time === '24-hour' ? 'bg-[#202B3B]' : 'bg-[#0B131E]'
+									time === '24-hour' ? 'bg-secondary' : 'bg-primary'
 								}`}
 								onClick={changeTime}>
 								<p>24-hour</p>
 							</button>
 							<button
 								className={`flex items-center justify-center w-1/2 py-2 rounded-md text-lg ${
-									time === '12-hour' ? 'bg-[#202B3B]' : 'bg-[#0B131E]'
+									time === '12-hour' ? 'bg-secondary' : 'bg-primary'
 								}`}
 								onClick={changeTime}>
 								<p>12-hour</p>

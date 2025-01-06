@@ -14,7 +14,7 @@ function SearchBar({ onSearch }) {
 	}
 
 	return (
-		<div className='w-10/12 mx-auto flex bg-[#202B3B] mt-4 px-2 rounded-md'>
+		<div className='w-10/12 mx-auto flex bg-secondary mt-4 px-2 rounded-md'>
 			<input
 				type='text'
 				placeholder='Search for a city'

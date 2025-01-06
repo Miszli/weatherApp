@@ -26,7 +26,7 @@ function FavoriteCities({ favorites, setFavorites }) {
 			{favorites.length === 0 && <p className='text-2xl font-light'>Your favorite cities will appear here</p>}
 
 			{favorites.map((location, index) => (
-				<div key={index} className='w-11/12 bg-[#202B3B] flex justify-between items-center p-4 rounded-md mb-6'>
+				<div key={index} className='w-11/12 bg-secondary flex justify-between items-center p-4 rounded-md mb-6'>
 					<Link to={`/${location}`} className='flex items-center gap-4 flex-grow'>
 						<img className='w-24 h-24' src={icons[index]} alt={conditions[index]} />
 						<div>

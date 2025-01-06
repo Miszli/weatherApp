@@ -129,6 +129,10 @@ function App() {
 		localStorage.setItem('precipitationUnit', newUnit)
 	}
 
+	useEffect(() => {
+		document.documentElement.setAttribute('data-theme', theme)
+	}, [theme])
+
 	return (
 		<SettingsProvider
 			value={{

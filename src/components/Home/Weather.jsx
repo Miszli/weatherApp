@@ -44,7 +44,7 @@ function Weather({ city, favorites, setFavorites }) {
 				)}
 			</div>
 
-			<div className='w-full bg-[#202B3B] mt-8 p-4 rounded-md'>
+			<div className='w-full bg-secondary mt-8 p-4 rounded-md'>
 				<p>Hourly Forecast</p>
 				<div className='grid lg:grid-rows-1 lg:grid-cols-6 lg:grid-flow-row gap-8 mt-4 py-4 grid-rows-2 grid-flow-col gap-y-12'>
 					{hourlyForecast.map((hour, index) => (
@@ -53,14 +53,14 @@ function Weather({ city, favorites, setFavorites }) {
 							<img className='my-2 w-16 h-16' src={hour.icon} alt={hour.condition} />
 							<p className='font-bold text-xl'>{hour.temp}</p>
 							{index < hourlyForecast.length - 1 && (
-								<div className='absolute right-[-8px] h-[80%] w-[1px] bg-gray-600/30 top-[10%]'></div>
+								<div className='absolute right-[-8px] h-[80%] w-[1px] bg-primary top-[10%]'></div>
 							)}
 						</div>
 					))}
 				</div>
 			</div>
 
-			<div className='w-full bg-[#202B3B] mt-8 p-4 rounded-md'>
+			<div className='w-full bg-secondary mt-8 p-4 rounded-md'>
 				<p>Conditions</p>
 				<div className='w-full mt-4 py-4 grid grid-cols-2 gap-x-16 gap-y-8'>
 					<div className=' max-[520px]:col-span-2 flex flex-col items-center'>
@@ -70,7 +70,7 @@ function Weather({ city, favorites, setFavorites }) {
 						</div>
 						<p className='text-3xl font-extrabold mt-2'>{feels_like}</p>
 					</div>
-					<div className='w-full h-px bg-gray-600/30 col-span-2 hidden max-[520px]:block'></div>
+					<div className='w-full h-px bg-primary col-span-2 hidden max-[520px]:block'></div>
 
 					<div className=' max-[520px]:col-span-2 flex flex-col items-center'>
 						<div className='flex items-center gap-2'>
@@ -81,7 +81,7 @@ function Weather({ city, favorites, setFavorites }) {
 							{windUnit === 'm/s' ? wind / (3.6).toFixed(0) : wind} {windUnit}
 						</p>
 					</div>
-					<div className='w-full h-px bg-gray-600/30 col-span-2'></div>
+					<div className='w-full h-px bg-primary col-span-2'></div>
 					<div className=' max-[520px]:col-span-2 flex flex-col items-center'>
 						<div className='flex items-center gap-2'>
 							<i className='fa-solid fa-droplet text-xl'></i>
@@ -89,7 +89,7 @@ function Weather({ city, favorites, setFavorites }) {
 						</div>
 						<p className='text-3xl font-extrabold mt-2'>{humidity}%</p>
 					</div>
-					<div className='w-full h-px bg-gray-600/30 col-span-2 hidden max-[520px]:block'></div>
+					<div className='w-full h-px bg-primary col-span-2 hidden max-[520px]:block'></div>
 					<div className=' max-[520px]:col-span-2 flex flex-col items-center'>
 						<div className='flex items-center gap-2'>
 							<i className='fa-solid fa-sun text-xl'></i>
@@ -97,7 +97,7 @@ function Weather({ city, favorites, setFavorites }) {
 						</div>
 						<p className='text-3xl font-extrabold mt-2'>{uv}</p>
 					</div>
-					<div className='w-full h-px bg-gray-600/30 col-span-2 row-span-1'></div>
+					<div className='w-full h-px bg-primary col-span-2 row-span-1'></div>
 					<div className=' max-[520px]:col-span-2 flex flex-col items-center'>
 						<div className='flex items-center gap-2'>
 							<i className='fa-solid fa-gauge-high text-xl'></i>
@@ -105,7 +105,7 @@ function Weather({ city, favorites, setFavorites }) {
 						</div>
 						<p className='text-3xl font-extrabold mt-2'>{pressure}</p>
 					</div>
-					<div className='w-full h-px bg-gray-600/30 col-span-2 hidden max-[520px]:block'></div>
+					<div className='w-full h-px bg-primary col-span-2 hidden max-[520px]:block'></div>
 					<div className=' max-[520px]:col-span-2 flex flex-col items-center'>
 						<div className='flex items-center gap-2'>
 							<i className='fa-solid fa-cloud-rain text-xl'></i>
