@@ -2,11 +2,11 @@ import React from 'react'
 import useWeather from '../../hooks/UseWeather'
 
 function Forecast({ city }) {
-	const { dailyForecast } = useWeather(city)
+	const { dailyForecast } = useWeather({ city })
 
 	return (
-		<div className='bg-[#202B3B] p-4 rounded-md lg:w-3/12 lg:mr-4 w-10/12'>
-			<h2 className='text-3xl font-semibold mb-4'>7-Day Forecast</h2>
+		<div className='bg-[#202B3B] p-4 rounded-md lg:w-3/12 lg:mr-4 w-10/12 lg:h-[772px]'>
+			<h2 className='text-3xl font-semibold mb-6'>7-Day Forecast</h2>
 			<div className='flex flex-col gap-y-9'>
 				{dailyForecast.map((day, index) => {
 					const date = new Date(day.date)

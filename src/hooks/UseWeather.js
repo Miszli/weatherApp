@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useSettings } from '../contexts'
 
-const useWeather = city => {
+const useWeather = ({ city }) => {
 	const API_KEY = '5997c03de1434f6f992124506250201 '
 	const API_URL = `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${city}&days=7`
 	const { temperatureUnit, pressureUnit, precipitationUnit } = useSettings()
@@ -13,6 +13,8 @@ const useWeather = city => {
 	const [humidity, setHumidity] = useState('')
 	const [uv, setUv] = useState('')
 	const [feels_like, setFeelsLike] = useState('')
+	const [pressure, setPressure] = useState('')
+	const [precipitation, setPrecipitation] = useState('')
 	const [hourlyForecast, setHourlyForecast] = useState([])
 	const [dailyForecast, setDailyForecast] = useState([])
 	const [country, setCountry] = useState('')
@@ -41,12 +43,16 @@ const useWeather = city => {
 				setHumidity(data.current.humidity)
 				setUv(data.current.uv)
 				setFeelsLike(temperatureUnit === 'celsius' ? data.current.feelslike_c + '°C' : data.current.feelslike_f + '°F')
+				setPressure(pressureUnit === 'hPa' ? data.current.pressure_mb + ' hPa' : data.current.pressure_in + ' in')
+				setPrecipitation(precipitationUnit === 'mm' ? data.current.precip_mm + ' mm' : data.current.precip_in + ' in')
 
 				// Get daily forecast data
 				const dailyData = data.forecast.forecastday.map(day => ({
 					date: day.date,
-					maxTemp: temperatureUnit === 'celsius' ? day.day.maxtemp_c.toFixed(0) + '°' : day.day.maxtemp_f.toFixed(0) + '°',
-					minTemp: temperatureUnit === 'celsius' ? day.day.mintemp_c.toFixed(0) + '°' : day.day.mintemp_f.toFixed(0) + '°',
+					maxTemp:
+						temperatureUnit === 'celsius' ? day.day.maxtemp_c.toFixed(0) + '°' : day.day.maxtemp_f.toFixed(0) + '°',
+					minTemp:
+						temperatureUnit === 'celsius' ? day.day.mintemp_c.toFixed(0) + '°' : day.day.mintemp_f.toFixed(0) + '°',
 					condition: day.day.condition.text,
 					icon: day.day.condition.icon,
 				}))
@@ -90,6 +96,8 @@ const useWeather = city => {
 		humidity,
 		uv,
 		feels_like,
+		pressure,
+		precipitation,
 		hourlyForecast,
 		dailyForecast,
 		error,

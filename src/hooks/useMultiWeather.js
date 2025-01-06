@@ -9,7 +9,6 @@ function useMultiWeather(cities) {
 	const [temps, setTemps] = useState([])
 	const [icons, setIcons] = useState([])
 	const [countries, setCountries] = useState([])
-	const [locations, setLocations] = useState([])
 	const [conditions, setConditions] = useState([])
 
 	useEffect(() => {
@@ -23,7 +22,6 @@ function useMultiWeather(cities) {
 				setTemps(data.map(item => temperatureUnit === 'celsius' ? item.current.temp_c + '°C' : item.current.temp_f + '°F'))
 				setIcons(data.map(item => item.current.condition.icon))
 				setCountries(data.map(item => item.location.country))
-				setLocations(data.map(item => item.location.name))
 				setConditions(data.map(item => item.current.condition.text))
 			} catch (error) {
 				console.error('Failed to fetch weather data', error)
@@ -35,7 +33,7 @@ function useMultiWeather(cities) {
 		fetchWeather()
 	}, [cities])
 
-	return { loading, temps, icons, countries, locations, conditions }
+	return { loading, temps, icons, countries, conditions }
 }
 
 export default useMultiWeather

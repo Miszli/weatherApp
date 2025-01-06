@@ -4,7 +4,20 @@ import AddToFavorite from './AddToFavorite'
 import { useSettings } from '../../contexts'
 
 function Weather({ city, favorites, setFavorites }) {
-	const { temp, country, condition, icon, wind, humidity, uv, feels_like, hourlyForecast, error } = useWeather(city)
+	const {
+		temp,
+		country,
+		condition,
+		icon,
+		wind,
+		humidity,
+		uv,
+		feels_like,
+		pressure,
+		precipitation,
+		hourlyForecast,
+		error,
+	} = useWeather({ city })
 	const { windUnit } = useSettings()
 
 	return (
@@ -26,7 +39,7 @@ function Weather({ city, favorites, setFavorites }) {
 							<p className='text-xl mb-8 mt-4'>{condition}</p>
 							<p className='text-5xl font-bold'>{temp}</p>
 						</div>
-						<AddToFavorite favCity={city} favorites={favorites} setFavorites={setFavorites}/>
+						<AddToFavorite favCity={city} favorites={favorites} setFavorites={setFavorites} />
 					</div>
 				)}
 			</div>
@@ -49,22 +62,56 @@ function Weather({ city, favorites, setFavorites }) {
 
 			<div className='w-full bg-[#202B3B] mt-8 p-4 rounded-md'>
 				<p>Conditions</p>
-				<div className='w-full mt-4 py-4 grid grid-cols-2 gap-x-16 gap-y-8 max-[440px]:grid-cols-1 max-[440px]:text-center'>
-					<div>
-						<h2 className='text-2xl font-medium'>Feels like</h2>
-						<p className='text-3xl font-extrabold'>{feels_like}</p>
+				<div className='w-full mt-4 py-4 grid grid-cols-2 gap-x-16 gap-y-8'>
+					<div className=' max-[520px]:col-span-2 flex flex-col items-center'>
+						<div className='flex items-center gap-2'>
+							<i className='fa-solid fa-temperature-half text-xl'></i>
+							<h2 className='text-2xl font-medium'>Feels like</h2>
+						</div>
+						<p className='text-3xl font-extrabold mt-2'>{feels_like}</p>
 					</div>
-					<div>
-						<h2 className='text-2xl font-medium'>Wind</h2>
-						<p className='text-3xl font-extrabold'>{windUnit === 'm/s' ? wind / (3.6).toFixed(0) : wind} {windUnit}</p>
+					<div className='w-full h-px bg-gray-600/30 col-span-2 hidden max-[520px]:block'></div>
+
+					<div className=' max-[520px]:col-span-2 flex flex-col items-center'>
+						<div className='flex items-center gap-2'>
+							<i className='fa-solid fa-wind text-xl'></i>
+							<h2 className='text-2xl font-medium'>Wind</h2>
+						</div>
+						<p className='text-3xl font-extrabold mt-2'>
+							{windUnit === 'm/s' ? wind / (3.6).toFixed(0) : wind} {windUnit}
+						</p>
 					</div>
-					<div>
-						<h2 className='text-2xl font-medium'>Humidity</h2>
-						<p className='text-3xl font-extrabold'>{humidity}%</p>
+					<div className='w-full h-px bg-gray-600/30 col-span-2'></div>
+					<div className=' max-[520px]:col-span-2 flex flex-col items-center'>
+						<div className='flex items-center gap-2'>
+							<i className='fa-solid fa-droplet text-xl'></i>
+							<h2 className='text-2xl font-medium'>Humidity</h2>
+						</div>
+						<p className='text-3xl font-extrabold mt-2'>{humidity}%</p>
 					</div>
-					<div>
-						<h2 className='text-2xl font-medium'>UV</h2>
-						<p className='text-3xl font-extrabold'>{uv}</p>
+					<div className='w-full h-px bg-gray-600/30 col-span-2 hidden max-[520px]:block'></div>
+					<div className=' max-[520px]:col-span-2 flex flex-col items-center'>
+						<div className='flex items-center gap-2'>
+							<i className='fa-solid fa-sun text-xl'></i>
+							<h2 className='text-2xl font-medium'>UV</h2>
+						</div>
+						<p className='text-3xl font-extrabold mt-2'>{uv}</p>
+					</div>
+					<div className='w-full h-px bg-gray-600/30 col-span-2 row-span-1'></div>
+					<div className=' max-[520px]:col-span-2 flex flex-col items-center'>
+						<div className='flex items-center gap-2'>
+							<i className='fa-solid fa-gauge-high text-xl'></i>
+							<h2 className='text-2xl font-medium'>Pressure</h2>
+						</div>
+						<p className='text-3xl font-extrabold mt-2'>{pressure}</p>
+					</div>
+					<div className='w-full h-px bg-gray-600/30 col-span-2 hidden max-[520px]:block'></div>
+					<div className=' max-[520px]:col-span-2 flex flex-col items-center'>
+						<div className='flex items-center gap-2'>
+							<i className='fa-solid fa-cloud-rain text-xl'></i>
+							<h2 className='text-2xl font-medium'>Precipitation</h2>
+						</div>
+						<p className='text-3xl font-extrabold mt-2'>{precipitation}</p>
 					</div>
 				</div>
 			</div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useNavigate, useParams } from 'react-router-dom'
 import { SettingsProvider } from './contexts'
 import Layout from './Layout'
 import Weather from './components/Home/Weather'
@@ -11,27 +11,49 @@ function AppContent() {
 	const [selectedCity, setSelectedCity] = useState('Warsaw')
 	const navigate = useNavigate()
 	const [favorites, setFavorites] = useState([])
+	const { city } = useParams()
 
 	useEffect(() => {
 		const storedFavorites = JSON.parse(localStorage.getItem('favoriteCities')) || []
 		setFavorites(storedFavorites)
 	}, [])
 
+	useEffect(() => {
+		if (city) {
+			setSelectedCity(city.toLowerCase())
+		} else {
+			setSelectedCity('warsaw')
+		}
+	}, [city])
+
 	const handleCitySearch = city => {
-		setSelectedCity(city)
-		navigate('/')
+		const formattedCity = city.toLowerCase()
+		setSelectedCity(formattedCity)
+		navigate(`/${formattedCity}`)
 	}
+
+	const WeatherContent = ({ city }) => (
+		<>
+			<Weather city={city} favorites={favorites} setFavorites={setFavorites} />
+			<Forecast city={city} />
+		</>
+	)
 
 	return (
 		<Routes>
 			<Route
-				path='/'
+				path={'/'}
 				element={
 					<Layout onSearch={handleCitySearch}>
-						<>
-							<Weather city={selectedCity} favorites={favorites} setFavorites={setFavorites} />
-							<Forecast city={selectedCity} />
-						</>
+						<WeatherContent city={selectedCity} />
+					</Layout>
+				}
+			/>
+			<Route
+				path={`/:city`}
+				element={
+					<Layout onSearch={handleCitySearch}>
+						<WeatherContent city={selectedCity} />
 					</Layout>
 				}
 			/>

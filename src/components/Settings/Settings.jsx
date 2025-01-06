@@ -31,10 +31,10 @@ function Settings() {
 	}
 
 	return (
-		<div className='w-full ml-7 mt-3 flex flex-col gap-12'>
-			<div className='flex justify-between items-center w-10/12'>
+		<div className='w-full lg:ml-7 mt-3 flex flex-col gap-12 justify-center items-center lg:items-start'>
+			<div className='flex lg:justify-between lg:items-center w-10/12 lg:flex-row flex-col align-start justify-start gap-4'>
 				<h1 className='min-[440px]:text-7xl text-5xl font-extrabold'>Settings</h1>
-				<button className='text-3xl font-extrabold text-red-500 py-1 px-4 hover:text-red-700' onClick={resetSettings}>
+				<button className='text-3xl font-extrabold text-red-500 py-1 lg:px-4 text-left hover:text-red-700 duration-300' onClick={resetSettings}>
 					reset
 				</button>
 			</div>
