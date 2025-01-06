@@ -103,7 +103,7 @@ function Settings() {
 						</div>
 					</div>
 					<div>
-						<h3 className='uppercase text-base font-extrabold opacity-60 mb-4'>temperature</h3>
+						<h3 className='uppercase text-base font-extrabold opacity-60 mb-4'>precipation</h3>
 						<div className='bg-primary flex items-center justify-center p-2 rounded-md'>
 							<button
 								className={`flex items-center justify-center w-1/2 py-2 rounded-md text-lg ${
