@@ -19,8 +19,8 @@ function Forecast({ city }) {
 							<p className='w-12 font-medium text-2xl'>{dayName}</p>
 							<img src={day.icon} alt={day.condition} className='lg:w-8 lg:h-8 w-16 h-16' />
 							<div className='flex text-2xl'>
-								<p className='font-bold'>{Math.round(day.maxTemp)}°</p>
-								<p className='font-medium text-white/50'> /{Math.round(day.minTemp)}°</p>
+								<p className='font-bold'>{day.maxTemp}</p>
+								<p className='font-medium text-white/50'> /{day.minTemp}</p>
 							</div>
 						</div>
 					)

@@ -1,12 +1,14 @@
 import React from 'react'
 import useWeather from '../../hooks/UseWeather'
 import AddToFavorite from './AddToFavorite'
+import { useSettings } from '../../contexts'
 
 function Weather({ city, favorites, setFavorites }) {
 	const { temp, country, condition, icon, wind, humidity, uv, feels_like, hourlyForecast, error } = useWeather(city)
+	const { windUnit } = useSettings()
 
 	return (
-		<div className='lg:w-7/12 flex flex-col overflow-hidden w-10/12'>
+		<div className='lg:w-7/12 flex flex-col w-10/12'>
 			<div className='flex flex-col justify-between w-full'>
 				{error || city === '' ? (
 					<>
@@ -22,7 +24,7 @@ function Weather({ city, favorites, setFavorites }) {
 								<img className='w-24 h-24' src={icon} alt={condition} />
 							</div>
 							<p className='text-xl mb-8 mt-4'>{condition}</p>
-							<p className='text-5xl font-bold'>{temp}°C</p>
+							<p className='text-5xl font-bold'>{temp}</p>
 						</div>
 						<AddToFavorite favCity={city} favorites={favorites} setFavorites={setFavorites}/>
 					</div>
@@ -36,7 +38,7 @@ function Weather({ city, favorites, setFavorites }) {
 						<div key={index} className='flex flex-col items-center relative'>
 							<p className='text-xl'>{hour.time}:00</p>
 							<img className='my-2 w-16 h-16' src={hour.icon} alt={hour.condition} />
-							<p className='font-bold text-xl'>{hour.temp.toFixed(0)}°C</p>
+							<p className='font-bold text-xl'>{hour.temp}</p>
 							{index < hourlyForecast.length - 1 && (
 								<div className='absolute right-[-8px] h-[80%] w-[1px] bg-gray-600/30 top-[10%]'></div>
 							)}
@@ -50,11 +52,11 @@ function Weather({ city, favorites, setFavorites }) {
 				<div className='w-full mt-4 py-4 grid grid-cols-2 gap-x-16 gap-y-8 max-[440px]:grid-cols-1 max-[440px]:text-center'>
 					<div>
 						<h2 className='text-2xl font-medium'>Feels like</h2>
-						<p className='text-3xl font-extrabold'>{feels_like}°C</p>
+						<p className='text-3xl font-extrabold'>{feels_like}</p>
 					</div>
 					<div>
 						<h2 className='text-2xl font-medium'>Wind</h2>
-						<p className='text-3xl font-extrabold'>{wind / (3.6).toFixed(0)} m/s</p>
+						<p className='text-3xl font-extrabold'>{windUnit === 'm/s' ? wind / (3.6).toFixed(0) : wind} {windUnit}</p>
 					</div>
 					<div>
 						<h2 className='text-2xl font-medium'>Humidity</h2>

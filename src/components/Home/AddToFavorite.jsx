@@ -2,13 +2,11 @@ import React, { useState, useEffect } from 'react'
 
 function AddToFavorite({ favCity, favorites, setFavorites }) {
 	const [buttonText, setButtonText] = useState(null)
-	const [index, setIndex] = useState(0)
 
 	const handleClick = favCity => {
-		setIndex(index + 1)
 		const cityLower = favCity.toLowerCase()
 
-		if (index % 2 === 0) {
+		if (!favorites.includes(cityLower)) {
 			const newFavorites = [...favorites, cityLower]
 			setButtonText(<i className='fa-solid fa-heart'></i>)
 			setFavorites(newFavorites)
@@ -22,7 +20,6 @@ function AddToFavorite({ favCity, favorites, setFavorites }) {
 	}
 
 	useEffect(() => {
-		setIndex(0)
 		setButtonText(<i className='fa-regular fa-heart'></i>)
 	}, [favCity])
 

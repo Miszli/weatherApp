@@ -4,7 +4,7 @@ function SearchBar({ onSearch }) {
 	const [city, setCity] = useState('')
 
 	const handleSearch = () => {
-		onSearch(city)
+		onSearch(city.toLowerCase())
 	}
 
 	const handleEnterSearch = e => {

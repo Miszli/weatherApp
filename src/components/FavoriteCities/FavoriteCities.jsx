@@ -36,7 +36,7 @@ function FavoriteCities({ favorites, setFavorites }) {
 						</div>
 					</div>
 					<div className='flex items-center gap-8'>
-						<p className='text-5xl font-extrabold'>{temps[index]}°C</p>
+						<p className='text-5xl font-extrabold'>{temps[index]}</p>
 						<button	
 							onClick={() => handleRemoveFavorite(index)}
 							className='text-2xl h-24 flex items-center justify-center text-red-500'>
