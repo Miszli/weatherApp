@@ -10,6 +10,7 @@ function SearchBar({ onSearch }) {
 	const handleEnterSearch = e => {
 		if (e.key === 'Enter') {
 			handleSearch()
+			setCity('')
 		}
 	}
 

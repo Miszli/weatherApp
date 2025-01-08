@@ -4,7 +4,7 @@ import { useSettings } from '../contexts'
 const useWeather = ({ city }) => {
 	const API_KEY = '5997c03de1434f6f992124506250201 '
 	const API_URL = `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${city}&days=7`
-	const { temperatureUnit, pressureUnit, precipitationUnit } = useSettings()
+	const { temperatureUnit, pressureUnit, precipitationUnit, time } = useSettings()
 
 	const [temp, setTemp] = useState('')
 	const [condition, setCondition] = useState('')
@@ -72,7 +72,12 @@ const useWeather = ({ city }) => {
 
 					const hourData = data.forecast.forecastday[dayIndex].hour[forecastHour]
 					forecast.push({
-						time: forecastHour,
+						time:
+							time === '12-hour'
+								? forecastHour > 12
+									? forecastHour - 12 + ' p.m.'
+									: forecastHour + ' a.m.'
+								: forecastHour + ':00',
 						temp: temperatureUnit === 'celsius' ? hourData.temp_c.toFixed(0) + '°C' : hourData.temp_f.toFixed(0) + '°F',
 						icon: hourData.condition.icon,
 						condition: hourData.condition.text,

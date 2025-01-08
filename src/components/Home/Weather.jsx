@@ -28,10 +28,10 @@ function Weather({ city, favorites, setFavorites }) {
 						<h2 className='text-5xl font-extrabold h-[196px]'>City not found</h2>
 					</>
 				) : (
-					<div className='flex justify-between items-start'>
+					<div className='flex justify-between items-start overflow-hidden lg:flex-row flex-col'>
 						<div>
 							<div className='flex items-center gap-4 max-w-[800px]'>
-								<h2 className='min-[440px]:text-7xl text-5xl font-extrabold'>
+								<h2 className='min-[440px]:text-7xl text-5xl font-extrabold text-2xl'>
 									{city.charAt(0).toUpperCase() + city.slice(1)}, {country}
 								</h2>
 								<img className='w-24 h-24' src={icon} alt={condition} />
@@ -49,7 +49,7 @@ function Weather({ city, favorites, setFavorites }) {
 				<div className='grid lg:grid-rows-1 lg:grid-cols-6 lg:grid-flow-row gap-8 mt-4 py-4 grid-rows-2 grid-flow-col gap-y-12'>
 					{hourlyForecast.map((hour, index) => (
 						<div key={index} className='flex flex-col items-center relative'>
-							<p className='text-xl'>{hour.time}:00</p>
+							<p className='text-xl'>{hour.time}</p>
 							<img className='my-2 w-16 h-16' src={hour.icon} alt={hour.condition} />
 							<p className='font-bold text-xl'>{hour.temp}</p>
 							{index < hourlyForecast.length - 1 && (
