@@ -25,7 +25,7 @@ function Weather({ city, favorites, setFavorites }) {
 			<div className='flex flex-col justify-between w-full'>
 				{error || city === '' ? (
 					<>
-						<h2 className='text-5xl font-extrabold h-[196px]'>City nt found</h2>
+						<h2 className='text-5xl font-extrabold h-[196px]'>City not found</h2>
 					</>
 				) : (
 					<div className='flex justify-between items-start overflow-hidden lg:flex-row flex-col'>
