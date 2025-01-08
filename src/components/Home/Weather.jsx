@@ -31,7 +31,7 @@ function Weather({ city, favorites, setFavorites }) {
 					<div className='flex justify-between items-start overflow-hidden lg:flex-row flex-col'>
 						<div>
 							<div className='flex items-center gap-4 max-w-[800px]'>
-								<h2 className='min-[440px]:text-7xl text-5xl font-extrabold text-2xl'>
+								<h2 className='min-[440px]:text-7xl text-5xl font-extrabold'>
 									{city.charAt(0).toUpperCase() + city.slice(1)}, {country}
 								</h2>
 								<img className='w-24 h-24' src={icon} alt={condition} />
