@@ -12,7 +12,6 @@ function Settings() {
 		changePressureUnit,
 		changePrecipitationUnit,
 		theme,
-		language,
 		time,
 		changeTheme,
 		changeLanguage,
@@ -25,7 +24,6 @@ function Settings() {
 		localStorage.setItem('pressureUnit', 'hPa')
 		localStorage.setItem('precipitationUnit', 'mm')
 		localStorage.setItem('theme', 'dark')
-		localStorage.setItem('language', 'en')
 		localStorage.setItem('time', '24-hour')
 		window.location.reload()
 	}
@@ -151,25 +149,6 @@ function Settings() {
 						</div>
 					</div>
 
-					<div>
-						<h3 className='uppercase text-base font-extrabold opacity-60 mb-4'>language</h3>
-						<div className='bg-primary flex items-center justify-center p-2 rounded-md'>
-							<button
-								className={`flex items-center justify-center w-1/2 py-2 rounded-md text-lg ${
-									language === 'en' ? 'bg-secondary' : 'bg-primary'
-								}`}
-								onClick={changeLanguage}>
-								<p>English</p>
-							</button>
-							<button
-								className={`flex items-center justify-center w-1/2 py-2 rounded-md text-lg ${
-									language === 'pl' ? 'bg-secondary' : 'bg-primary'
-								}`}
-								onClick={changeLanguage}>
-								<p>Polish</p>
-							</button>
-						</div>
-					</div>
 					<div>
 						<h3 className='uppercase text-base font-extrabold opacity-60 mb-4'>time</h3>
 						<div className='bg-primary flex items-center justify-center p-2 rounded-md'>

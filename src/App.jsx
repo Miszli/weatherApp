@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from 'react'
-import { BrowserRouter, Routes, Route, useNavigate, useParams, useLocation } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom'
 import { SettingsProvider } from './contexts'
 import Layout from './Layout'
 import Weather from './components/Home/Weather'
 import Forecast from './components/Home/Forecast'
 import FavoriteCities from './components/FavoriteCities/FavoriteCities'
 import Settings from './components/Settings/Settings'
-import { use } from 'react'
 
 function AppContent() {
 	const [selectedCity, setSelectedCity] = useState('Warsaw')
 	const navigate = useNavigate()
 	const [favorites, setFavorites] = useState([])
-	const { city } = useParams()
 	const location = useLocation()
 
 	useEffect(() => {
